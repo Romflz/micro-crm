@@ -4,9 +4,8 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./base.ts",
-    "./base": "./base.ts",
-    "./vue": "./vue.ts"
+    "./base": "./base.js",
+    "./vue": "./vue.js"
   },
   "peerDependencies": {
     "eslint": "^9.0.0",

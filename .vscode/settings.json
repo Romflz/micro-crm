@@ -13,7 +13,6 @@
 
   "eslint.enable": true,
   "eslint.useFlatConfig": true,
-  "eslint.options": {
-    "flags": ["unstable_ts_config"]
-  }
+  "eslint.workingDirectories": [{ "pattern": "apps/*" }, { "pattern": "packages/*" }],
+  "eslint.validate": ["javascript", "typescript", "vue"]
 }

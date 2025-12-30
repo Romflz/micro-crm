@@ -9,7 +9,6 @@ onMounted(async () => {
   message.value = data.message
 })
 </script>
-
 <template>
   <div>
     <p>API response: {{ message }}</p>
