@@ -1,0 +1,17 @@
+{
+  "name": "api",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts",
+    "lint": "eslint . --fix --cache"
+  },
+  "dependencies": {
+    "@repo/shared": "workspace:*",
+    "hono": "^4.11.3"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@types/bun": "latest",
+    "eslint": "^9.39.1"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "@repo/eslint-config",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./base.ts",
+    "./base": "./base.ts",
+    "./vue": "./vue.ts"
+  },
+  "peerDependencies": {
+    "eslint": "^9.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "typescript-eslint": "^8.32.1",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "@vue/eslint-config-typescript": "^14.6.0",
+    "eslint-plugin-vue": "~10.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.1",
+    "typescript": "~5.9.0"
+  }
+}
