@@ -8,11 +8,13 @@
   "dependencies": {
     "@repo/env": "workspace:*",
     "@repo/shared": "workspace:*",
+    "@hono/node-server": "^1.13.8",
     "hono": "^4.11.3"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
-    "@types/bun": "latest",
-    "eslint": "^9.39.1"
+    "@types/node": "^22.0.0",
+    "eslint": "^9.39.1",
+    "tsx": "^4.19.0"
   }
 }

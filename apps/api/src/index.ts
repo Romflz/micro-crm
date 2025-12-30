@@ -1,6 +1,7 @@
 import { env } from './env'
 import { Hono } from 'hono'
-import { serveStatic } from 'hono/bun'
+import { serve } from '@hono/node-server'
+import { serveStatic } from '@hono/node-server/serve-static'
 
 const app = new Hono()
 
@@ -17,7 +18,12 @@ app.route('/api', api)
 app.use('/*', serveStatic({ root: './public' }))
 app.use('/*', serveStatic({ root: './public', path: 'index.html' })) // SPA fallback
 
-export default {
-  port: env.PORT,
-  fetch: app.fetch,
-}
+serve(
+  {
+    fetch: app.fetch,
+    port: env.PORT,
+  },
+  info => {
+    console.log(`Server running at http://localhost:${info.port}`)
+  }
+)
