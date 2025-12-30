@@ -1,3 +1,4 @@
+import { env } from './env'
 import { Hono } from 'hono'
 import { serveStatic } from 'hono/bun'
 
@@ -16,4 +17,7 @@ app.route('/api', api)
 app.use('/*', serveStatic({ root: './public' }))
 app.use('/*', serveStatic({ root: './public', path: 'index.html' })) // SPA fallback
 
-export default app
+export default {
+  port: env.PORT,
+  fetch: app.fetch,
+}
