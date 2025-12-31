@@ -3,6 +3,11 @@ import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescri
 import pluginVue from 'eslint-plugin-vue'
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 import { sharedRules } from './base.js'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 // Vue Specific rules that we load inside createConfig
 const vueRules = {
@@ -46,6 +51,8 @@ const vueRules = {
 }
 
 export default function createConfig(options = {}, ...userConfigs) {
+  const { tsconfigRootDir = __dirname, ...restOptions } = options
+
   return defineConfigWithVueTs(
     {
       name: 'repo/files-to-lint',
@@ -62,7 +69,7 @@ export default function createConfig(options = {}, ...userConfigs) {
       name: 'repo/custom-rules',
       languageOptions: {
         parserOptions: {
-          tsconfigRootDir: '.',
+          tsconfigRootDir,
         },
       },
       rules: {
@@ -72,7 +79,7 @@ export default function createConfig(options = {}, ...userConfigs) {
     },
 
     // User overrides
-    Object.keys(options).length > 0 ? options : null,
+    Object.keys(restOptions).length > 0 ? restOptions : null,
     ...userConfigs
   ).filter(Boolean)
 }

@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# Docker specific
+db-data
+
 # Build outputs
 dist/
 dist-ssr/

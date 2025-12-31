@@ -1,5 +1,10 @@
 import { globalIgnores } from 'eslint/config'
 import tseslint from 'typescript-eslint'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 // Shared rules across all configs
 export const sharedRules = {
@@ -78,13 +83,15 @@ export const sharedRules = {
 }
 
 export default function createConfig(options = {}, ...userConfigs) {
+  const { tsconfigRootDir = __dirname, ...restOptions } = options
+
   return [
     {
       name: 'repo/files-to-lint',
       files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],
     },
 
-    globalIgnores(['**/dist/**', '**/node_modules/**', '**/coverage/**']),
+    globalIgnores(['**/dist/**', '**/node_modules/**', '**/coverage/**', '**/public/**', '**/dist-ssr/**']),
 
     ...tseslint.configs.recommended,
 
@@ -93,14 +100,14 @@ export default function createConfig(options = {}, ...userConfigs) {
       files: ['**/*.{ts,mts,cts}'],
       languageOptions: {
         parserOptions: {
-          tsconfigRootDir: '.',
+          tsconfigRootDir,
         },
       },
       rules: sharedRules,
     },
 
     // User overrides
-    Object.keys(options).length > 0 ? options : null,
+    Object.keys(restOptions).length > 0 ? restOptions : null,
     ...userConfigs,
   ].filter(Boolean)
 }

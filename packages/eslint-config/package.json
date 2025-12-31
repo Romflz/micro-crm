@@ -5,7 +5,8 @@
   "type": "module",
   "exports": {
     "./base": "./base.js",
-    "./vue": "./vue.js"
+    "./vue": "./vue.js",
+    "./create-config": "./create-config.js"
   },
   "peerDependencies": {
     "eslint": "^9.0.0",

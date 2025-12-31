@@ -1,3 +1,10 @@
-import createConfig from '@repo/eslint-config/base'
+import createConfig from '@repo/eslint-config/create-config'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
 
-export default createConfig()
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+export default createConfig({
+  tsconfigRootDir: __dirname,
+  ignores: ['public/*'],
+})
