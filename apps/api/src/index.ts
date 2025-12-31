@@ -19,7 +19,8 @@ app.use('/*', serveStatic({ root: './public', path: 'index.html' })) // SPA fall
 serve(
   {
     fetch: app.fetch,
-    port: env.DB_PORT,
+    port: env.PORT,
+    hostname: env.SERVER_URL,
   },
   info => {
     console.log(`Server running at http://localhost:${info.port}`)
